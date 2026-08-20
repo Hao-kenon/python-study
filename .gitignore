@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Claude
+.claude/
