@@ -33,7 +33,7 @@
 # print("未来第二个月数据",base + incr + incr)
 #
 # #案列 - pro  一次性定义多个变量
-# base,incr = 20.1,50
+# base, incr = 20.1, 50
 # print("未来第一个月数据",base + incr)
 # print("未来第二个月数据",base + incr + incr)
 
