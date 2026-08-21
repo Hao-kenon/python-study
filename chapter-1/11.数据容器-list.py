@@ -140,5 +140,5 @@ for num in num_list3:
 print(new_list)
 
 #法二:
-# new_list = [num**2 for num in num_list3 if num%2==0]
+# new_list = [num**2 for num in num_list3 if num % 2 == 0]
 # print(new_list)
