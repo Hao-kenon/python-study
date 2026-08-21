@@ -51,7 +51,7 @@ class Car:
         """充电/加油方法，基类中默认实现。"""
         print(f"{self.brand} {self.model}正在补充能源")
 
-# 注意：当重写父类方法时，如果需要调用父类的方法，可以通过 父类名。方法名 (self)/super()。方法名 ()
+# 注意：当重写父类方法时，如果需要调用父类的方法，可以通过 父类名.方法名 (self)/super().方法名 ()
 class FuelCar(Car):
     """燃油车类，继承自汽车类。"""
 
@@ -66,10 +66,10 @@ class ElectricCar(Car):
 
     def charge(self):
         """充电方法，扩展父类的补充能源方法。"""
-        # 方式一：super()。方法名 ()
+        # 方式一：super().方法名 ()
         # super().charge()
 
-        # 方式二：父类名。方法名 (self)
+        # 方式二：父类名.方法名 (self)
         Car.charge(self)
         print(f"{self.brand} {self.model}正在充电")
 
