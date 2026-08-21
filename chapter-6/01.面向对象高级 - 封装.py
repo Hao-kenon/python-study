@@ -52,7 +52,7 @@ class Car:
         return self.__owner[0:1] + '**'
 
 if __name__ == '__main__':
-    car = Car('Audi', 'A6', '白色', '张老板')
+    car = Car('Audi', 'A6', '白色', '张三')
     print(car.brand)
     print(car.model)
     print(car.color)
