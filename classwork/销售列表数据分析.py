@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
 from narwhals import col
+from pandas import Series
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei']
@@ -29,53 +30,65 @@ def data_brush(data: pd.DataFrame) -> pd.DataFrame:
 
 def daily_sales(data: pd.DataFrame, ax: Axes) -> None:
     """按天统计销售数量并绘制折线图"""
-    sales = data.groupby('订单日期')['销售额'].sum()
+    sales:Series = data.groupby('订单日期')['销售额'].sum()
     sales.index = sales.index.str[8::]
 
     x_date = sales.index.tolist()
     y_salse = sales.values.tolist()
 
+    #绘制折线图
     ax.plot(x_date, y_salse, color='g')
+    #设置标题和轴标签
     ax.set_title('每日销售额变化 2025-06',fontsize=15)
     ax.set_xlabel('日期', fontsize=14)
     ax.set_ylabel('销售数量', fontsize=14)
+    #绘制网格
     ax.grid(linestyle='--')
 
 
 def cities_sales(data: pd.DataFrame, ax: Axes) -> None:
     """按城市统计销售数量并绘制条形图"""
-    cities_count = data.groupby('客户所在城市')['销售数量'].sum()
+    cities_count: Series = data.groupby('客户所在城市')['销售数量'].sum()
     x_city = cities_count.index.tolist()
     y_cities_count = cities_count.values.tolist()
 
+    #绘制柱状图
     ax.bar(x_city, y_cities_count, color='g')
+    #设置标题和轴标签
     ax.set_title('不同城市销售数量对比', fontsize=15)
     ax.set_xlabel('城市', fontsize=14)
     ax.set_ylabel('销售数量', fontsize=14)
-    ax.tick_params(axis='x', rotation=45)
+    #旋转X轴标签
+    #设置网格
     ax.grid()
 
 
 def type_sales(data: pd.DataFrame, ax: Axes) -> None:
     """按产品类别统计销售数量并绘制条形图"""
-    products_count = data.groupby('产品类别')['销售数量'].sum()
+    products_count: Series = data.groupby('产品类别')['销售数量'].sum()
     x_products = products_count.index.tolist()
     y_products_count = products_count.values.tolist()
 
+    #绘制饼图
     ax.pie(y_products_count, labels=x_products, autopct='%1.1f%%', startangle=140)
+    #设置标题
     ax.set_title('不同产品类别销售数量比例', fontsize=15)
+    #设置图例属性
     ax.legend(loc='lower center', ncol=5, bbox_to_anchor=(0.5, -0.2))
 
 
-def payment_method_sales(data: pd.DataFrame, ax: Axes) -> pd.DataFrame:
+def payment_method_sales(data: pd.DataFrame, ax: Axes) -> None:
     """按支付方式统计销售数量并绘制饼图"""
-    payment_count = data.groupby('支付方式')['订单日期'].count()
+    payment_count: Series = data.groupby('支付方式')['订单日期'].count()
 
     x_payment = payment_count.index.tolist()
     y_payment_count = payment_count.values.tolist()
 
+    #绘制饼图
     ax.pie(y_payment_count, labels=x_payment, autopct='%1.1f%%', startangle=140)
+    #设置标题
     ax.set_title('不同支付方式对应订单占比', fontsize=15)
+    #设置图例属性
     ax.legend(loc='lower center', ncol=5, bbox_to_anchor=(0.5, -0.2))
 
 
