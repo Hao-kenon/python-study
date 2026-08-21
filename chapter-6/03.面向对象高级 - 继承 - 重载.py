@@ -75,7 +75,7 @@ class ElectricCar(Car):
 
 
 if __name__ == '__main__':
-    c1 = ElectricCar('BWM', 'x5', '白色', '张三')
+    c1 = ElectricCar('BWM', 'x5', '白色', '张老板')
     c1.charge()
 
     c2 = FuelCar('Audi', 'A6', '白色', '李四')
